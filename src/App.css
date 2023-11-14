@@ -1,0 +1,10 @@
+#orderplace-btn:hover{
+  background-color: #f3a847;
+}
+#orderplace-btn{
+  border: 1px solid #f3a847;
+}
+
+.activeSort{
+  color: #f3a847;
+}

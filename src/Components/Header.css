@@ -1,0 +1,51 @@
+.header-top-strip,.header-middle{
+    background-color: #131921;
+    border-bottom: 1px solid #3b4149;
+}
+
+.header-bottom{
+    background-color: #232f3e;
+}
+
+.top-strip-p{
+    font-size: .8rem;
+    font-weight: 200;
+}
+.logo{
+    height: 35px;
+}
+
+.header-middle .input-group-text{
+    background-color: #f3a847;
+    height: fit-content;
+    display: inline-block;
+}
+
+a{
+    color: white;
+}
+.cart{
+    position: relative;
+}
+.badge{
+    position: absolute;
+    bottom: 5px;
+    left: 18px;
+}
+
+#shop-catagory{
+    font-weight: 200;
+    font-size: 14px;
+}
+.active{
+    color: #f3a847;
+}
+.link{
+    font-weight: 200;
+    font-size: 14px;
+}
+
+#fs-3{
+    font-size: 0.9rem;
+    font-weight: 200;
+}
