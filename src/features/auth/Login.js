@@ -20,14 +20,14 @@ export default function Login() {
 
     console.log(data)
     toast.loading('Waiting...');
-    if (data.email != userData[0]?.email || data.password != userData[0]?.password) {
+    if (data.email != userData.email || data.password != userData.password) {
       setCheckUser('Email or Password is wrong')
       console.log(1)
       toast.dismiss()
     } else {
       setCheckUser('')
       setcheckUserSuccess('Successfull')
-      console.log(2)
+      // console.log(2)
       toast.dismiss()
 
     }
@@ -36,7 +36,7 @@ export default function Login() {
   }
   return (
     <>
-      {checkUserSuccess ? <Navigate to='/admin' /> : null}
+      {checkUserSuccess ? <Navigate to='/' /> : null}
 
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">

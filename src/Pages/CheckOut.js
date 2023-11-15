@@ -28,7 +28,7 @@ function CheckOut() {
     const dispatch = useDispatch()
 
     const [paymentType, setPaymentType] = useState('')
-    const [userAddress, setUserAddress] = useState('')
+    const [userAddress, setUserAddress] = useState(null)
     const cartItems = useSelector(state => state.cart.cartItem)
     const currentOrder = useSelector(state => state.order.currentOrder) //??
     const user = useSelector(state => state.user.userLoggesIn)
@@ -51,7 +51,7 @@ function CheckOut() {
 
     function handleOrder() {
         if (paymentType && userAddress) {
-            let order = { items: cartItems, totalAmt }
+            let order = { items: cartItems, totalAmt, user, userAddress }
             dispatch(createOrder(order))
         } else {
             toast.error('Please select address & payment method', {
@@ -63,8 +63,8 @@ function CheckOut() {
     }
 
     function handleUserAddress(e){
-        setUserAddress(e.target.value)
-        // console.log(e.target.value)
+        setUserAddress(user.address[e.target.value])
+        console.log(user.address[e.target.value])
     }
 
     function handlePayment(e) {
@@ -212,7 +212,7 @@ function CheckOut() {
                                                 type="radio"
                                                 className="form-check-input"
                                                 onChange={handleUserAddress}
-                                                value={address.Pincode}
+                                                value={i}
                                             />
                                             <div className="min-w-0 flex-auto">
                                                 <p className="text-sm font-semibold leading-6 text-gray-900">
