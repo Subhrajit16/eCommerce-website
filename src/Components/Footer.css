@@ -1,0 +1,17 @@
+footer{
+    background-color: #232f3e;
+}
+footer:nth-child(n){
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#footer-userEmail:focus{
+    border: none;
+    outline: none;
+}
+
+.subscribe-btn{
+    background-color: #232f3e;
+    color: white;
+    border: 1.4px solid white;
+}
