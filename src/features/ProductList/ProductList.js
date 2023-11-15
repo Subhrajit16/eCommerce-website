@@ -100,6 +100,7 @@ export default function ProductList() {
   function handlePagination(page) {
     // console.log(page)
     setPage(page)
+    console.log(1)
   }
 
   return (
