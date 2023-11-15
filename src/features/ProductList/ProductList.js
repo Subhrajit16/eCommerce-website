@@ -58,7 +58,7 @@ export default function ProductList() {
     {
       id: 'brand',
       name: 'Brand',
-      options: brands
+      options: brands 
     },
     {
       id: 'category',
@@ -70,7 +70,6 @@ export default function ProductList() {
 
   function handleFilter(e, key, value, id) {
     let newFilter = { ...filter }
-    console.log(key, value)
     if (e.target.checked) {
       if (newFilter[key]) {
         newFilter[key].push(value)
@@ -78,7 +77,7 @@ export default function ProductList() {
       else {
         newFilter[key] = [value]
       }
-      dispatch(updateCategoryCheckedValue({ id, change: { checked: e.target.checked } }))
+      dispatch(updateCategoryCheckedValue({ id, change: { checked: e.target.checked }}))
     } else {
       let index = newFilter[key].findIndex((elm) => elm === value)
       newFilter[key].splice(index, 1)

@@ -1846,8 +1846,12 @@
 // const catagory = [...new Set(product.map((elm)=>elm.category))]
 // console.log(catagory)
 
-const arr = [{name:'subh'},{class:25}]
+// const arr = [{name:'subh'},{class:25}]
 
-let newObj = [...arr]
-console.log(...arr)
+// let newObj = {...arr}
+// console.log(newObj)
 
+let obj = {name:'subh', place:'bang'}
+for(let key in obj){
+    let value = obj[key]
+}

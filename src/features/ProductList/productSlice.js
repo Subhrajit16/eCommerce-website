@@ -50,8 +50,8 @@ export const getAllBrands = createAsyncThunk(
 export const updateCategoryCheckedValue = createAsyncThunk(
   'products/updateCategoryCheckedValue',
   async ({ id, change }) => { 
-    console.log(id)
-    console.log(change)
+    // console.log(id)
+    // console.log(change)
     const resp = await fetch(`http://localhost:8080/categories/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(change),
