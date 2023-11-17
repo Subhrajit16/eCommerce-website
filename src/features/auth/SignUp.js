@@ -3,15 +3,24 @@ import { Link, Navigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux';
 import { createUser } from './authSlice';
+import { googleProvider } from '../../Firebase-config';
+import { signInWithPopup } from 'firebase/auth';
+import { auth } from '../../Firebase-config';
+import { useNavigate } from 'react-router-dom';
+
 function SignUp() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
     const dispatch  = useDispatch()
+    const navigate = useNavigate();
     const userData=useSelector(state=>state.user.userLoggesIn)
-    console.log(userData)
-
+    // console.log(userData)
+    async function googleSignIn(){
+       await signInWithPopup(auth, googleProvider)
+       navigate('/')
+    }
     return (
         <div>
-            {/* {userData.length ? <Navigate to='/admin'/> : null} */}
+            {/* {user ? <Navigate to='/'/> : null} */}
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
@@ -127,8 +136,13 @@ function SignUp() {
                         </div>
                     </form>
 
+                    <div>
+                        <p className='text-center mt-3'>or signin with</p>
+                        <img onClick={googleSignIn} className='mx-auto cursor-pointer' src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" width={'40px'} alt="" />
+                    </div>
+
                     <p className="mt-10 text-center text-sm text-gray-500">
-                        Alrady have an account?{' '}
+                        Alrady have an account?
                         <Link to='/login' href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                             Login
                         </Link>

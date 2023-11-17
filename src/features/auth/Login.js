@@ -4,6 +4,10 @@ import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
+import { auth, googleProvider } from '../../Firebase-config';
+import { signInWithPopup } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+
 export default function Login() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
   // console.log(errors)
@@ -11,10 +15,11 @@ export default function Login() {
   const [checkUser, setCheckUser] = useState('')
   const [checkUserSuccess, setcheckUserSuccess] = useState('')
   const dispatch = useDispatch()
-  
+  const navigate = useNavigate();
+
   let querryMsg = searchParams.get('message')
   const userData = useSelector(state => state.user.userLoggesIn)
-  console.log(userData)
+  // console.log(userData)
 
   function handleLogin(data) {
 
@@ -33,6 +38,11 @@ export default function Login() {
     }
 
     reset();
+  }
+
+  async function googleLogIn(){
+    await signInWithPopup(auth, googleProvider)
+    navigate('/')
   }
   return (
     <>
@@ -109,6 +119,11 @@ export default function Login() {
               </button>
             </div>
           </form>
+
+          <div>
+            <p className='text-center mt-3'>or Login with</p>
+            <img onClick={googleLogIn} className='mx-auto cursor-pointer' src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" width={'40px'} alt="" />
+          </div>
 
           <p className="mt-10 text-center text-sm text-gray-500">
             New here?{' '}
